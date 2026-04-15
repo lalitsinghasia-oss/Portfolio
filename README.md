@@ -1,4 +1,4 @@
-# 👨‍💻 Arun - Full Stack Developer Portfolio
+# 👨‍💻 Lalit - Full Stack Developer Portfolio
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen)](https://your-portfolio-link.com)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
