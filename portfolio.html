@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>LALIT | Full Stack Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: white;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            min-height: 80vh;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content .title {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content .description {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image i {
+            font-size: 15rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech span {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .company {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--gray);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: var(--primary);
+            font-size: 1.25rem;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">LALIT Portfolio</div>
+            <div class="nav-links" id="navLinks">
+                <a class="nav-link active" data-section="home">Home</a>
+                <a class="nav-link" data-section="skills">Skills</a>
+                <a class="nav-link" data-section="projects">Projects</a>
+                <a class="nav-link" data-section="experience">Experience</a>
+                <a class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Section -->
+        <div id="homeSection" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="badge">Welcome to my portfolio</span>
+                    <h1>
+                        Hi, I'm <span class="highlight">LALIT</span><br>
+                        Full Stack Developer
+                    </h1>
+                    <div class="title">Building amazing web experiences</div>
+                    <p class="description">
+                        I'm a passionate Full Stack Developer from Bathinda, Punjab. 
+                        I love creating beautiful, responsive, and user-friendly web applications 
+                        that solve real-world problems. With expertise in both frontend and backend 
+                        technologies, I bring ideas to life.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" onclick="switchSection('contact')">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
+                        <a href="#" class="btn-secondary" onclick="downloadResume()">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skillsSection" class="section">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>Technologies and tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-html5" style="color: #E34F26;"></i>
+                    <h3>HTML5</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                    <h3>CSS3</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-react" style="color: #61DAFB;"></i>
+                    <h3>React.js</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-node" style="color: #339933;"></i>
+                    <h3>Node.js</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-python" style="color: #3776AB;"></i>
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database" style="color: #4479A1;"></i>
+                    <h3>MongoDB</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database" style="color: #00758F;"></i>
+                    <h3>MySQL</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                    <h3>Git</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-bootstrap" style="color: #7952B3;"></i>
+                    <h3>Bootstrap</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-tailwind" style="color: #06B6D4;"></i>
+                    <h3>Tailwind CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-cloud" style="color: #FF9900;"></i>
+                    <h3>AWS</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projectsSection" class="section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Some of my best work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>PG Manager Pro</h3>
+                        <p>Complete tenant management system for PG/Hostel owners with payment tracking, blog system, and reporting features.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>LocalStorage</span>
+                        </div>
+                        <a href="#" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>BlogMaster Platform</h3>
+                        <p>Modern blogging platform with create, read, update, delete operations, comments, likes, and categories.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Express</span>
+                        </div>
+                        <a href="#" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Dashboard</h3>
+                        <p>Analytics dashboard for e-commerce stores with sales tracking, inventory management, and customer insights.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Chart.js</span>
+                            <span>Redux</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <a href="#" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>TaskFlow Manager</h3>
+                        <p>Team collaboration tool with task assignment, progress tracking, real-time updates, and file sharing.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Firebase</span>
+                            <span>Vuetify</span>
+                        </div>
+                        <a href="#" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                            <i class="fas fa-external-link-alt"></i> View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experienceSection" class="section">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <p>My professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Senior Full Stack Developer</h3>
+                    <div class="company">Tech Solutions India • Bathinda, Punjab</div>
+                    <div class="date">2022 - Present</div>
+                    <p>Leading a team of 5 developers to build scalable web applications. Implemented microservices architecture and improved application performance by 40%.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Web Developer</h3>
+                    <div class="company">Digital Creations • Chandigarh</div>
+                    <div class="date">2020 - 2022</div>
+                    <p>Developed responsive websites and web applications for clients across various industries. Collaborated with design team to implement pixel-perfect interfaces.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Frontend Developer Intern</h3>
+                    <div class="company">StartUp Hub • Mohali</div>
+                    <div class="date">2019 - 2020</div>
+                    <p>Assisted in building React components and implementing responsive designs. Gained hands-on experience with modern frontend technologies.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h2>Education</h2>
+                <p>Academic background</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Master of Computer Applications</h3>
+                    <div class="company">Punjabi University, Patiala</div>
+                    <div class="date">2017 - 2019</div>
+                    <p>Specialized in Web Technologies and Cloud Computing. CGPA: 8.5/10</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Bachelor of Computer Applications</h3>
+                    <div class="company">Punjab University, Chandigarh</div>
+                    <div class="date">2014 - 2017</div>
+                    <p>Graduated with distinction. Focus on programming and software development.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contactSection" class="section">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Let's work together</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Phone</h3>
+                    <p>+91 86999 50023</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>Lalit@fullstackdeveloper.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Bathinda, Punjab, India</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Lalit - Full Stack Developer. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">Based in Bathinda, Punjab | Available for freelance work</p>
+    </footer>
+
+    <script>
+        // Section switching
+        function switchSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${sectionName}Section`).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.section === sectionName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Download resume
+        function downloadResume() {
+            const resumeContent = `
+                LALIT - FULL STACK DEVELOPER
+                ================================
+                
+                Contact: +91 8699950023
+                Email: lalit@fullstackdeveloper.com
+                Location: Bathinda, Punjab
+                
+                PROFESSIONAL SUMMARY
+                --------------------------------
+                Passionate Full Stack Developer with 4+ years of experience in building 
+                responsive web applications. Expertise in modern JavaScript frameworks, 
+                backend development, and database management.
+                
+                TECHNICAL SKILLS
+                --------------------------------
+                • Frontend: HTML5, CSS3, JavaScript, React.js, Vue.js, Bootstrap, Tailwind
+                • Backend: Node.js, Python, Express.js
+                • Database: MongoDB, MySQL, PostgreSQL
+                • Tools: Git, Docker, AWS, Firebase
+                
+                WORK EXPERIENCE
+                --------------------------------
+                Senior Full Stack Developer | Tech Solutions India (2022-Present)
+                • Leading development team for enterprise web applications
+                • Improved application performance by 40%
+                
+                Web Developer | Digital Creations (2020-2022)
+                • Developed 15+ responsive websites for clients
+                • Implemented SEO best practices
+                
+                EDUCATION
+                --------------------------------
+                MCA - Punjabi University, Patiala (2017-2019)
+                BCA - Punjab University, Chandigarh (2014-2017)
+                
+                PROJECTS
+                --------------------------------
+                • PG Manager Pro - Complete tenant management system
+                • BlogMaster Platform - Modern blogging platform
+                • E-Commerce Dashboard - Analytics dashboard
+                • TaskFlow Manager - Team collaboration tool
+            `;
+            
+            const blob = new Blob([resumeContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Arun_Resume.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileNavToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Navigation click handlers
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.dataset.section;
+                switchSection(section);
+                // Close mobile menu
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
